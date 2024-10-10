@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مترجم الكيبورد</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: rgba(0, 0, 0, 0.6);
+            border-radius: 15px;
+            padding: 30px;
+            width: 400px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+        h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        input, textarea {
+            background-color: rgba(255, 255, 255, 0.1);
+            border: none;
+            border-radius: 10px;
+            padding: 15px;
+            color: white;
+            margin-bottom: 15px;
+            font-size: 18px;
+            width: 100%;
+            box-sizing: border-box;
+            transition: all 0.3s;
+        }
+        input:focus, textarea:focus {
+            background-color: rgba(255, 255, 255, 0.2);
+            outline: none;
+        }
+        textarea {
+            height: 150px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>مترجم الكيبورد</h2>
+        
+        <label for="inputText">النص بالحروف الانجليزية</label>
+        <input type="text" id="inputText" placeholder="اكتب هنا">
+
+        <label for="outputText">الترجمة بالعربي</label>
+        <textarea id="outputText" readonly></textarea>
+    </div>
+
+    <script>
+        const layoutMap = {
+    
+    'q': 'ض', 'w': 'ص', 'e': 'ث', 'r': 'ق', 't': 'ف', 'y': 'غ', 'u': 'ع', 'i': 'ه', 'o': 'خ', 'p': 'ح',
+    '[': 'ج', ']': 'د', 'a': 'ش', 's': 'س', 'd': 'ي', 'f': 'ب', 'g': 'ل', 'h': 'ا', 'j': 'ت', 'k': 'ن', 'l': 'م',
+    ';': 'ك', "'": 'ط', 'z': 'ئ', 'x': 'ء', 'c': 'ؤ', 'v': 'ر', 'b': 'لا', 'n': 'ى', 'm': 'ة', ',': 'و', '.': 'ز', '/': 'ظ',
+    'Q': 'َ', 'W': 'ً', 'E': 'ُ', 'R': 'ٌ', 'T': 'إ', 'Y': 'غ', 'U': 'ع', 'I': 'ه', 'O': 'خ', 'P': 'ح',
+    'A': 'ِ', 'S': 'ٍ', 'D': ']', 'F': '[', 'G': 'لإ', 'H': 'إ', 'J': 'آ', 'K': '»', 'L': '«',
+    'Z': 'ْ', 'X': 'ْ', 'C': 'ؤ', 'V': 'ر', 'B': 'لأ', 'N': 'أ', 'M': 'إ', '?': '؟'
+}
+        document.getElementById('inputText').addEventListener('input', function() {
+            let inputText = this.value;
+            let outputText = '';
+
+            for (let char of inputText) {
+                outputText += layoutMap[char] || char;
+            }
+
+            document.getElementById('outputText').value = outputText;
+        });
+    </script>
+
+</body>
+</html>
